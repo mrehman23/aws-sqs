@@ -75,6 +75,18 @@ class AwsSqsWorker extends AwsSqsKernel
     }
 
     /**
+     * Validate the presence of SQS client.
+     *
+     * @throws \Exception
+     */
+    private function validateSqsClient(): void
+    {
+        if ($this->sqsClient === null) {
+            throw new \Exception("No SQS client defined");
+        }
+    }
+    
+    /**
      * Process messages.
      *
      * @param callable $workerProcess
