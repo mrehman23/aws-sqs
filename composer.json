@@ -16,7 +16,7 @@
     },
     "autoload":{
         "psr-4":{
-            "SqsSimple\\": "src/"
+            "AwsSqs\\": "src/"
         }
     },
     "minimum-stability": "stable"  

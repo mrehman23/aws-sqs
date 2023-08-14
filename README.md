@@ -27,7 +27,7 @@ composer require mrehman23/aws-sqs
 ## Examples
 ```
 require 'vendor/autoload.php';
-use SqsSimple\SqsMessenger;
+use AwsSqs\SqsMessenger;
 $AwsConfig = [
     'AWS_KEY'=>'', //You should put your AWS_KEY 
     'AWS_SECRET_KEY'=>'', //You should put your AWS_SECRET_KEY 
@@ -52,7 +52,7 @@ $result = $messenger->publish($queue, $message, $messageAttributes, $delaySecond
 ### Listener
 ```
 require 'vendor/autoload.php';
-use SqsSimple\SqsWorker;
+use AwsSqs\SqsWorker;
 
 $worker = new SqsWorker($this->awsConfig['credentials']);
 $worker->listen(
