@@ -41,19 +41,17 @@ class AwsSqsWorker extends AwsSqsKernel
         $counterCheck = 0;
         $errorCounter = 0;
 
-        while ($checkForMessages) {
-            $this->out("Check(" . $counterCheck . ") time: " . date("Y-m-d H:i:s"));
+        $this->out("Check(" . $counterCheck . ") time: " . date("Y-m-d H:i:s"));
 
-            try {
-                $this->processMessages($workerProcess);
-                $errorCounter = 0;
-            } catch (AwsException $e) {
-                $errorCounter++;
-                $this->handleAwsException($e, $errorCounter, $errorHandlerCallback);
-            }
-
-            $counterCheck++;
+        try {
+            $this->processMessages($workerProcess);
+            $errorCounter = 0;
+        } catch (AwsException $e) {
+            $errorCounter++;
+            $this->handleAwsException($e, $errorCounter, $errorHandlerCallback);
         }
+
+        $counterCheck++;
 
         $this->printFooter();
     }
